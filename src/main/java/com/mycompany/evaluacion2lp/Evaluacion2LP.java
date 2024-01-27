@@ -9,9 +9,11 @@ public class Evaluacion2LP {
     public static void main(String[] args) {
         System.out.println("Hello World!");
         // Crear una instancia de la interfaz
-        GUI miInterfaz = new GUI();
-
+        GUI Interfaz = new GUI();
         // Hacer visible la interfaz
-        miInterfaz.setVisible(true);
+        // AppJava Interfaz = new AppJava();
+
+        Interfaz.setVisible(true);
+
     }
 }
