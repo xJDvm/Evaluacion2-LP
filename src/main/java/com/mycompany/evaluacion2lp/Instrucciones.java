@@ -82,11 +82,11 @@ public class Instrucciones {
                 figura = new Piramide(0, 0, 0);
                 instrucciones = figura.obtenerInstrucciones();
                 break;
-            case "Tetraedro regular":
+            case "Tetraedro Regular":
                 figura = new TetraedroRegular(0);
                 instrucciones = figura.obtenerInstrucciones();
                 break;
-            case "Octaedro regular":
+            case "Octaedro Regular":
                 figura = new OctaedroRegular(0);
                 instrucciones = figura.obtenerInstrucciones();
                 break;

@@ -80,7 +80,7 @@ public class Volumen {
                 resultado = figura.volumen();
                 break;
 
-            case "Tetaedro Regular":
+            case "Tetraedro Regular":
                 validarCampos(valores[0], null, null);
                 figura = new TetraedroRegular(
                         Double.parseDouble(valores[0]));
