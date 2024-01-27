@@ -13,7 +13,7 @@ public class GUI extends JFrame {
     private JSeparator separator;
 
     public GUI() {
-        setTitle("Calculadora Avanzada");
+        setTitle("Calculadora - Juan Valdes");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
