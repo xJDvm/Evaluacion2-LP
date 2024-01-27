@@ -5,6 +5,8 @@ public interface FigurasGeometricas {
 
     double perimetro();
 
+    double volumen();
+
     public static String[] obtenerNombresFiguras() {
         return new String[] {
                 "Cuadrado", "Triangulo", "Rectangulo", "Paralelogramo", "Rombo",
@@ -30,6 +32,10 @@ class Cuadrado implements FigurasGeometricas {
     public double perimetro() {
         return 4 * a;
     }
+
+    public double volumen() {
+        return 0;
+    }
 }
 
 class Triangulo implements FigurasGeometricas {
@@ -49,6 +55,10 @@ class Triangulo implements FigurasGeometricas {
     public double perimetro() {
         return a + b + c;
     }
+
+    public double volumen() {
+        return 0;
+    }
 }
 
 class Rectangulo implements FigurasGeometricas {
@@ -65,6 +75,10 @@ class Rectangulo implements FigurasGeometricas {
 
     public double perimetro() {
         return 2 * (b + a);
+    }
+
+    public double volumen() {
+        return 0;
     }
 }
 
@@ -84,6 +98,10 @@ class Paralelogramo implements FigurasGeometricas {
     public double perimetro() {
         return 2 * (b + a);
     }
+
+    public double volumen() {
+        return 0;
+    }
 }
 
 class Rombo implements FigurasGeometricas {
@@ -101,6 +119,10 @@ class Rombo implements FigurasGeometricas {
 
     public double perimetro() {
         return 4 * a;
+    }
+
+    public double volumen() {
+        return 0;
     }
 }
 
@@ -121,6 +143,10 @@ class Cometa implements FigurasGeometricas {
 
     public double perimetro() {
         return 2 * (b + a);
+    }
+
+    public double volumen() {
+        return 0;
     }
 }
 
@@ -144,6 +170,10 @@ class Trapecio implements FigurasGeometricas {
         return h + a + b + c;
     }
 
+    public double volumen() {
+        return 0;
+    }
+
 }
 
 class Circulo implements FigurasGeometricas {
@@ -159,6 +189,10 @@ class Circulo implements FigurasGeometricas {
 
     public double perimetro() {
         return 2 * (Math.PI) * a;
+    }
+
+    public double volumen() {
+        return 0;
     }
 }
 
@@ -179,6 +213,10 @@ class PoligonoRegular implements FigurasGeometricas {
     public double perimetro() {
         return c * b;
     }
+
+    public double volumen() {
+        return 0;
+    }
 }
 
 class CoronaCircular implements FigurasGeometricas {
@@ -195,6 +233,10 @@ class CoronaCircular implements FigurasGeometricas {
 
     @Override
     public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
         return 0;
     }
 }
@@ -214,5 +256,315 @@ class SectorCircular implements FigurasGeometricas {
     @Override
     public double perimetro() {
         return 0;
+    }
+
+    public double volumen() {
+        return 0;
+    }
+}
+
+// INICIO DE FIGURAS CON VOLUMENES
+
+class Cubo implements FigurasGeometricas {
+    double a;
+
+    public Cubo(double a) {
+        this.a = a;
+    }
+
+    public double area() {
+        return 6 * (a * a);
+    }
+
+    public double volumen() {
+        return a * a * a;
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+}
+
+class Cilindro implements FigurasGeometricas {
+    double a;
+    double b;
+
+    public Cilindro(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public double area() {
+        return (2 * (Math.PI)) * (a * (b + a));
+    }
+
+    public double volumen() {
+        return Math.PI * (a * a) * b;
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+}
+
+class Ortoedro implements FigurasGeometricas {
+    double a, b, c;
+
+    Ortoedro(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        return 2 * ((a * b) + (a * c) + (b * c));
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return a * b * c;
+    }
+}
+
+class PrismaRecto implements FigurasGeometricas {
+    double a, b, c;
+
+    PrismaRecto(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        return 2 * (a * b + a * c + b * c);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return a * b * c;
+    }
+}
+
+class Cono implements FigurasGeometricas {
+    double a, b, c;
+
+    Cono(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        return (Math.PI * a) * (a + c);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.PI * (a * a) * b) / 3;
+    }
+}
+
+class TroncoDeCono implements FigurasGeometricas {
+    double a, b, c;
+
+    TroncoDeCono(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        return Math.PI * (b * b + c * c + Math.sqrt((b - c) * (b + c) + a * a));
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.PI * a / 3) * (b * b + b * c + c * c);
+    }
+}
+
+class Esfera implements FigurasGeometricas {
+    double a;
+
+    public Esfera(double a) {
+        this.a = a;
+    }
+
+    public double area() {
+        return 4 * Math.PI * (a * a);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (4 * Math.PI * (a * a * a) / 3);
+    }
+
+}
+
+class Piramide implements FigurasGeometricas {
+    double a, b, c;
+
+    Piramide(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        double perimetrobase = 4 * a;
+        return (perimetrobase * (a + b) / 2);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        double areabase = a * a;
+        return (areabase * c) / 3;
+    }
+}
+
+class TetraedroRegular implements FigurasGeometricas {
+    double a;
+
+    public TetraedroRegular(double a) {
+        this.a = a;
+    }
+
+    public double area() {
+        return Math.sqrt(3) * (a * a);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.sqrt(2) * (a * a * a) / 12);
+    }
+
+}
+
+class OctaedroRegular implements FigurasGeometricas {
+    double a;
+
+    public OctaedroRegular(double a) {
+        this.a = a;
+    }
+
+    public double area() {
+        return 2 * Math.sqrt(3) * (a * a);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.sqrt(2) * (a * a * a) / 3);
+    }
+
+}
+
+class TroncoDePiramide implements FigurasGeometricas {
+    double a, b, c;
+
+    TroncoDePiramide(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        double apotema = Math.sqrt(a / Math.sqrt(3)); // Apotema asumida
+        return a + b + Math.sqrt(a * b) + 2 * apotema * Math.sqrt((a - b) + c * c);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (a + b + Math.sqrt(a * b)) * c / 3;
+    }
+}
+
+class CasqueteEsferico implements FigurasGeometricas {
+    double a, b;
+
+    CasqueteEsferico(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public double area() {
+        return ((2 * Math.PI) * a * b);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.PI * (b * b) * ((3 * a) - b)) / 3;
+    }
+}
+
+class CunaEsferica implements FigurasGeometricas {
+    double a, b;
+
+    CunaEsferica(double a, double b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public double area() {
+        return ((4 * Math.PI) * (a * a) * b) / 360;
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return ((4 * Math.PI) * (a * a * a) * b) / (3 * 360);
+    }
+}
+
+class SegmentoEsferico implements FigurasGeometricas {
+    double a, b, c;
+
+    SegmentoEsferico(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    public double area() {
+        return ((2 * Math.PI) * a * b);
+    }
+
+    public double perimetro() {
+        return 0;
+    }
+
+    public double volumen() {
+        return (Math.PI * b * ((b * b) + (3 * (b * b)) + (3 * (c * c)))) / 6;
     }
 }

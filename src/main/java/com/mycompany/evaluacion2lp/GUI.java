@@ -127,7 +127,6 @@ public class GUI extends JFrame {
                 calcular();
             }
         });
-
         // Configuración del ActionListener para el botón "Limpiar"
         limpiarButton.addActionListener(new ActionListener() {
             @Override
@@ -153,8 +152,8 @@ public class GUI extends JFrame {
                 System.out.println("perimetroseleccinado");
 
             } else if ("Volumen".equals(calculoSeleccionado)) {
-
-                System.out.println("perimetroseleccinado");
+                resultado = Volumen.calcularVolumen(figuraSeleccionada, valores);
+                System.out.println("volumenseleccioanado");
             }
 
             else {
