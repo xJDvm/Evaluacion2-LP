@@ -2,8 +2,6 @@ package com.mycompany.evaluacion2lp;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
 
@@ -14,16 +12,11 @@ public class GUI extends JFrame {
     private JPanel imagePanel;
     private JSeparator separator;
 
-    /**
-     * 
-     */
     public GUI() {
-        // Configuración de la ventana
         setTitle("Calculadora Avanzada");
-        setSize(800, 400); // Ajusté el tamaño para dar más espacio
+        setSize(800, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Creación de componentes
         valorA = new JTextField(15);
         valorB = new JTextField(15);
         valorC = new JTextField(15);
@@ -37,15 +30,14 @@ public class GUI extends JFrame {
 
         resultadoLabel = new JLabel("Resultado:");
         resultadoLabel.setHorizontalAlignment(JLabel.CENTER);
+        resultadoLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
 
         separator = new JSeparator(JSeparator.VERTICAL);
 
-        // Configuración del panel izquierdo
         JPanel panelIzquierdo = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        // Utilicé un bucle para reducir la repetición de código
         String[] labels = { "Valor A:", "Valor B:", "Valor C:", "Calculo:", "Figura Geometrica:" };
         JTextField[] textFields = { valorA, valorB, valorC };
         int row = 0;
@@ -90,7 +82,6 @@ public class GUI extends JFrame {
 
         imagePanel = new JPanel();
 
-        // Añadir una etiqueta para mostrar la imagen
         JLabel imagenLabel = new JLabel();
         imagenLabel.setIcon(new ImageIcon("src/main/java/com/mycompany/evaluacion2lp/img/cuadrado.jpg")); // Ajusta la
                                                                                                           // ruta y el
@@ -116,6 +107,7 @@ public class GUI extends JFrame {
         calcularButton.addActionListener(e -> calcular());
         limpiarButton.addActionListener(e -> limpiar());
         comboBox2.addActionListener(e -> actualizarImagen());
+        actualizarImagen();
     }
 
     private void calcular() {
@@ -139,7 +131,6 @@ public class GUI extends JFrame {
             }
 
             else {
-                // Add logic for other calculations if needed
                 resultadoLabel.setText("Resultado: ");
                 return;
             }
@@ -156,156 +147,34 @@ public class GUI extends JFrame {
         valorA.setText("");
         valorB.setText("");
         valorC.setText("");
-        comboBox1.setSelectedIndex(0); // Restablece la selección de "Area"
-        comboBox2.setSelectedIndex(0); // Restablece la selección de "Cuadrado"
+        comboBox1.setSelectedIndex(0);
+        comboBox2.setSelectedIndex(0);
         resultadoLabel.setText("Resultado: ");
     }
 
     private void actualizarImagen() {
-        // Obtener el nombre de la figura seleccionada
-        String nombreFigura = (String) comboBox2.getSelectedItem();
+        String figuraSeleccionada = (String) comboBox2.getSelectedItem();
 
-        // Construir la ruta de la imagen basada en el nombre de la figura
-        String rutaImagen = "src/main/java/com/mycompany/evaluacion2lp/img/" + nombreFigura.toLowerCase() + ".jpg";
+        String rutaImagen = "src/main/java/com/mycompany/evaluacion2lp/img/" + figuraSeleccionada.toLowerCase()
+                + ".jpg";
 
-        // Actualizar la imagen en el panel
         ImageIcon nuevaImagen = new ImageIcon(rutaImagen);
         JLabel imagenLabel = new JLabel();
         imagenLabel.setIcon(nuevaImagen);
 
-        // Limpiar el panel y agregar la nueva imagen
         imagePanel.removeAll();
-        imagePanel.add(imagenLabel);
+        String instrucciones = Instrucciones.instruccionFigura(figuraSeleccionada);
+
+        JLabel instruccionesLabel = new JLabel(instrucciones);
+        instruccionesLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        instruccionesLabel.setBorder(BorderFactory.createEmptyBorder(10, 3, 3, 3));
+
+        imagePanel.setLayout(new BorderLayout());
+        imagePanel.add(instruccionesLabel, BorderLayout.NORTH);
+        imagePanel.add(imagenLabel, BorderLayout.CENTER);
+
         imagePanel.revalidate();
         imagePanel.repaint();
     }
 }
-
-// public void validarCampos(String figuraSeleccionada, JTextField... campos) {
-// if (figuraSeleccionada.equals("Cuadrado")) {
-// if (!campos[0].getText().isEmpty()) {
-// return; // Campo válido para el Cuadrado
-// } else {
-// throw new IllegalArgumentException(
-// "Error: El primer campo debe estar lleno para el cálculo del cuadrado.");
-// }
-// } else {
-// for (JTextField campo : campos) {
-// if (!campo.getText().isEmpty()) {
-// continue; // Campo válido para otras figuras
-// } else {
-// throw new IllegalArgumentException(
-// "Error: Todos los campos deben estar llenos para esta figura geométrica.");
-// }
-// }
-// }
-// }
-// private void calculer() {
-// String calculoSeleccionado = (String) comboBox1.getSelectedItem();
-// String figuraSeleccionada = (String) comboBox2.getSelectedItem();
-
-// if ("Area".equals(calculoSeleccionado)) {
-// try {
-// double resultado = 0;
-// FigurasGeometricas figura = null;
-
-// switch (figuraSeleccionada) {
-// case "Cuadrado":
-// validarCampos(valorA);
-// asignarImagen(figuraSeleccionada);
-// // Crear un objeto Cuadrado con el valor de 'a'
-// figura = new Cuadrado(Double.parseDouble(valorA.getText()));
-// // Llamar al método area sin argumentos
-// resultado = figura.area();
-// break;
-
-// case "Triangulo":
-// validarCampos(valorA, valorB, valorC);
-// asignarImagen(figuraSeleccionada);
-// figura = new Triangulo(
-// Double.parseDouble(valorA.getText()),
-// Double.parseDouble(valorB.getText()),
-// Double.parseDouble(valorC.getText()));
-// resultado = figura.area();
-// break;
-
-// case "Rectangulo":
-// validarCampos(valorA, valorB);
-// asignarImagen(figuraSeleccionada);
-// figura = new Rectangulo(
-// Double.parseDouble(valorA.getText()),
-// Double.parseDouble(valorB.getText()));
-// resultado = figura.area();
-// break;
-
-// case "Paralelogramo":
-// validarCampos(valorA, valorB);
-// asignarImagen(figuraSeleccionada);
-// figura = new Paralelogramo(
-// Double.parseDouble(valorA.getText()),
-// Double.parseDouble(valorB.getText()));
-// resultado = figura.area();
-// break;
-
-// case "Rombo":
-// validarCampos(valorA);
-// asignarImagen(figuraSeleccionada);
-// figura = new Rombo(
-// Double.parseDouble(valorA.getText()));
-// resultado = figura.area();
-// break;
-
-// case "Cometa":
-// validarCampos(valorA, valorB);
-// asignarImagen(figuraSeleccionada);
-// figura = new Cometa(
-// Double.parseDouble(valorA.getText()),
-// Double.parseDouble(valorB.getText()));
-// resultado = figura.area();
-// break;
-
-// case "Trapecio":
-// validarCampos(valorA, valorB, valorC);
-// asignarImagen(figuraSeleccionada);
-// figura = new Trapecio(
-// Double.parseDouble(valorA.getText()),
-// Double.parseDouble(valorB.getText()),
-// Double.parseDouble(valorC.getText()));
-
-// // Llamar al método area sin argumentos
-// resultado = figura.area();
-// break;
-
-// case "Circulo":
-// validarCampos(valorA);
-// asignarImagen(figuraSeleccionada);
-// figura = new Circulo(
-// Double.parseDouble(valorA.getText()));
-// resultado = figura.area();
-// break;
-
-// default:
-// resultadoLabel.setText("Figura no reconocida");
-// return;
-// }
-
-// resultadoLabel.setText("Resultado: " + resultado);
-// } catch (NumberFormatException ex) {
-// resultadoLabel.setText("Error: Ingresa valores numéricos válidos.");
-// } catch (IllegalArgumentException ex) {
-// resultadoLabel.setText(ex.getMessage());
-// }
-// } else {
-// // Agrega lógica para otros cálculos si es necesario
-// resultadoLabel.setText("Resultado: ");
-// }
-// }
-
-// public void validarCampos(JTextField... campos) {
-// for (JTextField campo : campos) {
-// if (campo.getText().isEmpty()) {
-// throw new IllegalArgumentException(
-// "Error: Todos los campos deben estar llenos para esta figura geométrica.");
-// }
-// }
-// }

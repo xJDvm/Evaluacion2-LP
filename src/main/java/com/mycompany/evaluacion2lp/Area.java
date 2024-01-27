@@ -3,7 +3,6 @@ package com.mycompany.evaluacion2lp;
 public class Area {
 
     private static void validarCampos(String valor1, String valor2, String valor3) {
-        // Puedes ajustar la lógica de validación según tus necesidades
         if (valor1 == null || valor1.isEmpty() || (valor2 != null && valor2.isEmpty())
                 || (valor3 != null && valor3.isEmpty())) {
             throw new IllegalArgumentException("Error: Todos los campos requeridos deben tener valores.");
@@ -78,11 +77,10 @@ public class Area {
                 break;
 
             case "Poligono Regular":
-                validarCampos(valores[0], valores[1], valores[2]);
+                validarCampos(valores[0], valores[1], null);
                 figura = new PoligonoRegular(
                         Double.parseDouble(valores[0]),
-                        Double.parseDouble(valores[1]),
-                        Double.parseDouble(valores[2]));
+                        Double.parseDouble(valores[1]));
                 resultado = figura.area();
                 break;
 
@@ -168,7 +166,7 @@ public class Area {
                 resultado = figura.area();
                 break;
 
-            case "Tetaedro Regular":
+            case "Tetraedro Regular":
                 validarCampos(valores[0], null, null);
                 figura = new TetraedroRegular(
                         Double.parseDouble(valores[0]));

@@ -3,7 +3,6 @@ package com.mycompany.evaluacion2lp;
 public class Perimetro {
 
     private static void validarCampos(String valor1, String valor2, String valor3) {
-        // Puedes ajustar la lógica de validación según tus necesidades
         if (valor1 == null || valor1.isEmpty() || (valor2 != null && valor2.isEmpty())
                 || (valor3 != null && valor3.isEmpty())) {
             throw new IllegalArgumentException("Error: Todos los campos requeridos deben tener valores.");
@@ -77,8 +76,16 @@ public class Perimetro {
                 resultado = figura.perimetro();
                 break;
 
+            case "Poligono Regular":
+                validarCampos(valores[0], valores[1], null);
+                figura = new PoligonoRegular(
+                        Double.parseDouble(valores[0]),
+                        Double.parseDouble(valores[1]));
+                resultado = figura.perimetro();
+                break;
+
             default:
-                throw new IllegalArgumentException("Figura no reconocida");
+                throw new IllegalArgumentException("Esta figura no tiene calculo de Perimetro.");
         }
 
         return resultado;

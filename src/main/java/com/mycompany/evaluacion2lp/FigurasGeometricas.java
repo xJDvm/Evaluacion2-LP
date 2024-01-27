@@ -13,9 +13,11 @@ public interface FigurasGeometricas {
                 "Cometa", "Trapecio", "Circulo", "Poligono Regular", "Corona Circular",
                 "Sector Circular", "Cubo", "Cilindro", "Ortoedro", "Prisma Recto", "Cono",
                 "Tronco de Cono", "Esfera", "Piramide", "Tetraedro Regular", "Octaedro Regular",
-                "Tronco de Piramide", "Casquete Esférico", "Cuña Esferica", "Segmento Esferico"
+                "Tronco de Piramide", "Casquete Esferico", "Cuña Esferica", "Segmento Esferico"
         };
     }
+
+    String obtenerInstrucciones();
 }
 
 class Cuadrado implements FigurasGeometricas {
@@ -35,6 +37,10 @@ class Cuadrado implements FigurasGeometricas {
 
     public double volumen() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el cuadrado: <br> El valor A = lado.</html>";
     }
 }
 
@@ -59,6 +65,10 @@ class Triangulo implements FigurasGeometricas {
     public double volumen() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el triangulo: <br> Los valores a, b y c, corresponden a cada lado del triangulo";
+    }
 }
 
 class Rectangulo implements FigurasGeometricas {
@@ -79,6 +89,10 @@ class Rectangulo implements FigurasGeometricas {
 
     public double volumen() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el rectangulo: <br> Los valores a y b corresponden a los lados.";
     }
 }
 
@@ -102,6 +116,10 @@ class Paralelogramo implements FigurasGeometricas {
     public double volumen() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el paralelogramo: <br> Solo utiliza los valores a y b";
+    }
 }
 
 class Rombo implements FigurasGeometricas {
@@ -123,6 +141,10 @@ class Rombo implements FigurasGeometricas {
 
     public double volumen() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el rombo: <br> Solo se utiliza el valor de a";
     }
 }
 
@@ -147,6 +169,10 @@ class Cometa implements FigurasGeometricas {
 
     public double volumen() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el cometa: <br> Solo utiliza el valor de a y b";
     }
 }
 
@@ -174,6 +200,10 @@ class Trapecio implements FigurasGeometricas {
         return 0;
     }
 
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el trapecio: <br> Utiliza los valores a, b y c.";
+    }
+
 }
 
 class Circulo implements FigurasGeometricas {
@@ -194,28 +224,35 @@ class Circulo implements FigurasGeometricas {
     public double volumen() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el circulo: <br> El valor A corresponde al radio.";
+    }
 }
 
 class PoligonoRegular implements FigurasGeometricas {
-    double a, b, c;
+    double a, b;
 
-    PoligonoRegular(double a, double b, double c) {
+    PoligonoRegular(double a, double b) {
         this.a = a;
         this.b = b;
-        this.c = c;
     }
 
     public double area() {
-        double perimetro = c * b;
+        double perimetro = 6 * b;
         return (perimetro * a) / 2;
     }
 
     public double perimetro() {
-        return c * b;
+        return 6 * b;
     }
 
     public double volumen() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el poligono regular: <br> El valor A representa la apotema. <br> El valor b representa el tamaño de los lados.";
     }
 }
 
@@ -239,6 +276,10 @@ class CoronaCircular implements FigurasGeometricas {
     public double volumen() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para la corona circular: <br> El valor A representa el radio externo <br> El valor B representa el radio interno";
+    }
 }
 
 class SectorCircular implements FigurasGeometricas {
@@ -261,6 +302,11 @@ class SectorCircular implements FigurasGeometricas {
     public double volumen() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el sector circular: <br> El valor A representa el radio <br> El valor b representa el ángulo.";
+    }
+
 }
 
 // INICIO DE FIGURAS CON VOLUMENES
@@ -282,6 +328,10 @@ class Cubo implements FigurasGeometricas {
 
     public double perimetro() {
         return 0;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el cubo: <br> El valor A representa la longitud de los lados";
     }
 }
 
@@ -305,6 +355,10 @@ class Cilindro implements FigurasGeometricas {
     public double perimetro() {
         return 0;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el cilindro: <br> El valor A representa el radio. <br> El valor B representa la altura.";
+    }
 }
 
 class Ortoedro implements FigurasGeometricas {
@@ -327,6 +381,10 @@ class Ortoedro implements FigurasGeometricas {
     public double volumen() {
         return a * b * c;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el ortoedro: <br> El valor A representa el ancho <br> El valor B representa el largo <br> El valor C representa la altura.";
+    }
 }
 
 class PrismaRecto implements FigurasGeometricas {
@@ -339,7 +397,9 @@ class PrismaRecto implements FigurasGeometricas {
     }
 
     public double area() {
-        return 2 * (a * b + a * c + b * c);
+        double areabase = a * b;
+        double arealateral = 2 * (a + b) * c;
+        return 2 * areabase + arealateral;
     }
 
     public double perimetro() {
@@ -348,6 +408,10 @@ class PrismaRecto implements FigurasGeometricas {
 
     public double volumen() {
         return a * b * c;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el prisma recto: <br> El valor A representa la longitud de la base <br> El valor B representa el ancho de la base <br> El valor C representa la altura del prisma.";
     }
 }
 
@@ -371,6 +435,10 @@ class Cono implements FigurasGeometricas {
     public double volumen() {
         return (Math.PI * (a * a) * b) / 3;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el cono: <br> El valor A representa el radio de la base. <br> El valor B representa la altura del cono <br> El valor C representa la generatriz del cono.";
+    }
 }
 
 class TroncoDeCono implements FigurasGeometricas {
@@ -383,7 +451,8 @@ class TroncoDeCono implements FigurasGeometricas {
     }
 
     public double area() {
-        return Math.PI * (b * b + c * c + Math.sqrt((b - c) * (b + c) + a * a));
+        double radiosuperior = (c * c) / (2 * a);
+        return Math.PI * (c * (radiosuperior + a) + (radiosuperior * radiosuperior) + (a * a));
     }
 
     public double perimetro() {
@@ -391,7 +460,12 @@ class TroncoDeCono implements FigurasGeometricas {
     }
 
     public double volumen() {
-        return (Math.PI * a / 3) * (b * b + b * c + c * c);
+        double radiosuperior = (c * c) / (2 * a);
+        return (Math.PI * b * ((a * a) + (radiosuperior * radiosuperior) + a * radiosuperior)) / 3;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el tronco de cono: <br> El valor A representa el radio de la base. <br> El valor B representa la altura del cono <br> El valor C representa la generatriz del cono.";
     }
 }
 
@@ -412,6 +486,10 @@ class Esfera implements FigurasGeometricas {
 
     public double volumen() {
         return (4 * Math.PI * (a * a * a) / 3);
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para la esfera: <br> el valor A representa el Radio.";
     }
 
 }
@@ -438,6 +516,10 @@ class Piramide implements FigurasGeometricas {
         double areabase = a * a;
         return (areabase * c) / 3;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para la piramide: <br> El valor A representa la longitud de la base <br> El valor B representa la longtitud de la base lateral <br> El valor C representa la altura de la piramide.";
+    }
 }
 
 class TetraedroRegular implements FigurasGeometricas {
@@ -459,6 +541,9 @@ class TetraedroRegular implements FigurasGeometricas {
         return (Math.sqrt(2) * (a * a * a) / 12);
     }
 
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el tetraedro regular: <br> El valor A representa la longitud del lado.";
+    }
 }
 
 class OctaedroRegular implements FigurasGeometricas {
@@ -478,6 +563,10 @@ class OctaedroRegular implements FigurasGeometricas {
 
     public double volumen() {
         return (Math.sqrt(2) * (a * a * a) / 3);
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el octaedro regular: <br> El valor A representa la longitud del lado.";
     }
 
 }
@@ -503,6 +592,10 @@ class TroncoDePiramide implements FigurasGeometricas {
     public double volumen() {
         return (a + b + Math.sqrt(a * b)) * c / 3;
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el tronco de piramide: <br> El valor A representa el area de la base inferior <br> El valor B representa el area de la base superior <br> El valor C representa la altura de la figura.";
+    }
 }
 
 class CasqueteEsferico implements FigurasGeometricas {
@@ -523,6 +616,10 @@ class CasqueteEsferico implements FigurasGeometricas {
 
     public double volumen() {
         return (Math.PI * (b * b) * ((3 * a) - b)) / 3;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el casquete esferico: <br> El valor A representa el radio <br> El valor b representa la altura del casquete.";
     }
 }
 
@@ -545,6 +642,10 @@ class CunaEsferica implements FigurasGeometricas {
     public double volumen() {
         return ((4 * Math.PI) * (a * a * a) * b) / (3 * 360);
     }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para la cuña esferica: <br> El valor A representael radio <br> El valor B representa el ángulo.";
+    }
 }
 
 class SegmentoEsferico implements FigurasGeometricas {
@@ -565,6 +666,11 @@ class SegmentoEsferico implements FigurasGeometricas {
     }
 
     public double volumen() {
-        return (Math.PI * b * ((b * b) + (3 * (b * b)) + (3 * (c * c)))) / 6;
+        double radiosuperior = Math.sqrt(c * c + Math.pow(a + b, 2));
+        return (Math.PI * b * ((b * b) + (3 * (b * b)) + (3 * (radiosuperior * radiosuperior)))) / 6;
+    }
+
+    public String obtenerInstrucciones() {
+        return "<html>Instrucciones para el segmento esferico: <br> El valor A representa la altura del segmento <br> El valor B representa la altura dentro del segmento <br> El valor C representa el radio inferior.";
     }
 }

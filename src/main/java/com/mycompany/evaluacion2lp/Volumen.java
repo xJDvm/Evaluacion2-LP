@@ -2,7 +2,6 @@ package com.mycompany.evaluacion2lp;
 
 public class Volumen {
     private static void validarCampos(String valor1, String valor2, String valor3) {
-        // Puedes ajustar la lógica de validación según tus necesidades
         if (valor1 == null || valor1.isEmpty() || (valor2 != null && valor2.isEmpty())
                 || (valor3 != null && valor3.isEmpty())) {
             throw new IllegalArgumentException("Error: Todos los campos requeridos deben tener valores.");
@@ -18,7 +17,7 @@ public class Volumen {
                 validarCampos(valores[0], null, null);
                 figura = new Cubo(
                         Double.parseDouble(valores[0]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Cilindro":
@@ -26,7 +25,7 @@ public class Volumen {
                 figura = new Cilindro(
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Ortoedro":
@@ -35,7 +34,7 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Prisma Recto":
@@ -44,7 +43,7 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Cono":
@@ -53,7 +52,7 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Tronco de Cono":
@@ -62,14 +61,14 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Esfera":
                 validarCampos(valores[0], null, null);
                 figura = new Esfera(
                         Double.parseDouble(valores[0]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Piramide":
@@ -78,21 +77,21 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Tetaedro Regular":
                 validarCampos(valores[0], null, null);
                 figura = new TetraedroRegular(
                         Double.parseDouble(valores[0]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Octaedro Regular":
                 validarCampos(valores[0], null, null);
                 figura = new OctaedroRegular(
                         Double.parseDouble(valores[0]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Tronco de Piramide":
@@ -101,7 +100,7 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Casquete Esferico":
@@ -109,7 +108,7 @@ public class Volumen {
                 figura = new CasqueteEsferico(
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Cuña Esferica":
@@ -117,7 +116,7 @@ public class Volumen {
                 figura = new CunaEsferica(
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             case "Segmento Esferico":
@@ -126,11 +125,11 @@ public class Volumen {
                         Double.parseDouble(valores[0]),
                         Double.parseDouble(valores[1]),
                         Double.parseDouble(valores[2]));
-                resultado = figura.area();
+                resultado = figura.volumen();
                 break;
 
             default:
-                throw new IllegalArgumentException("Figura no reconocida");
+                throw new IllegalArgumentException("Esta figura no tiene calculo de volumen");
         }
 
         return resultado;
