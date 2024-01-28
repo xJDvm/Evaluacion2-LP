@@ -83,10 +83,7 @@ public class GUI extends JFrame {
         imagePanel = new JPanel();
 
         JLabel imagenLabel = new JLabel();
-        imagenLabel.setIcon(new ImageIcon("src/main/java/com/mycompany/evaluacion2lp/img/cuadrado.jpg")); // Ajusta la
-                                                                                                          // ruta y el
-                                                                                                          // nombre de
-                                                                                                          // tu imagen
+        imagenLabel.setIcon(new ImageIcon("src/main/java/com/mycompany/evaluacion2lp/img/cuadrado.jpg"));
 
         imagePanel.add(imagenLabel);
 
@@ -120,17 +117,11 @@ public class GUI extends JFrame {
 
             if ("Area".equals(calculoSeleccionado)) {
                 resultado = Area.calcularArea(figuraSeleccionada, valores);
-
             } else if ("Perímetro".equals(calculoSeleccionado)) {
                 resultado = Perimetro.calcularPerimetro(figuraSeleccionada, valores);
-                System.out.println("perimetroseleccinado");
-
             } else if ("Volumen".equals(calculoSeleccionado)) {
                 resultado = Volumen.calcularVolumen(figuraSeleccionada, valores);
-                System.out.println("volumenseleccioanado");
-            }
-
-            else {
+            } else {
                 resultadoLabel.setText("Resultado: ");
                 return;
             }
