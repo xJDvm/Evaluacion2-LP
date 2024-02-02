@@ -671,6 +671,7 @@ class SegmentoEsferico implements FigurasGeometricas {
     }
 
     public String obtenerInstrucciones() {
-        return "<html>Instrucciones para el segmento esferico: <br> El valor A representa la altura del segmento <br> El valor B representa la altura dentro del segmento <br> El valor C representa el radio inferior.";
+        return "<html>Instrucciones para el segmento esferico: <br> El valor A representa la altura del segmento <br> El valor B representa la altura dentro del segmento <br> El valor C representa el radio inferior. <br>La formula de radio superior se calcula como: <br> R=√(c^2+(a+b)^2)";
     }
+
 }
